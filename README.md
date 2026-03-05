@@ -1,7 +1,7 @@
-
 # Hospital Management System
 
-An open-source hospital management system designed to assist small hospitals around the world.
+An open-source hospital management system built with **Python (Flask)** and **MySQL**.  
+This demo web application is designed to help small hospitals manage their daily operations more efficiently.
 
 ## Features
 
@@ -9,58 +9,78 @@ An open-source hospital management system designed to assist small hospitals aro
 - Doctor and appointment scheduling
 - Lab test and prescription management
 - User authentication and registration
+- Simple, extensible architecture using Flask and SQLAlchemy
 
-## Setup and Running
+## Tech Stack
 
-### 1. Setup a Virtual Environment
+- **Backend:** Python, Flask  
+- **Database:** MySQL (default is SQLite for local development)  
+- **Frontend:** HTML, CSS, JavaScript  
+- **Other:** Docker support, virtual environment recommended  
 
-It's recommended to use a virtual environment. This avoids potential package conflicts.
+## Getting Started
+
+Follow these steps to run the project locally.
+
+### 1. Create and Activate a Virtual Environment
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate  # On Windows, use: .\venv\Scripts\activate
 ```
 
-### 2. Install Required Libraries
+### 2. Install Dependencies
 
-Navigate to the project directory and install the required libraries:
+From the project root directory, install the required libraries:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Setup Environment Variables
+### 3. Configure Environment Variables
 
-If you want to use a different database than the SQLite default, set the DATABASE_URI environment variable:
+By default, the app can run with SQLite. To use MySQL (or another database), set the `DATABASE_URI` environment variable:
 
 ```bash
 export DATABASE_URI="mysql+pymysql://<username>:<password>@<host>:<port>/<database>"
 ```
 
+On Windows (PowerShell), you can set it with:
+
+```powershell
+$env:DATABASE_URI = "mysql+pymysql://<username>:<password>@<host>:<port>/<database>"
+```
+
 ### 4. Initialize the Database
 
-Before running the app for the first time, initialize the database:
+Before running the app for the first time, initialize the database schema:
 
 ```python
 from utils.database import Base, engine
 Base.metadata.create_all(bind=engine)
 ```
 
-### 5. Run the App
+### 5. Run the Application
 
-Navigate to the project directory and run:
+From the project directory, start the Flask app:
 
 ```bash
 python app.py
 ```
 
-### 6. Access the App
+### 6. Access the Application
 
-Once the app is running, access it in your web browser at `http://localhost:5000/`.
+Once the app is running, open your browser and navigate to:
+
+```text
+http://localhost:5000/
+```
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit pull requests or raise issues. (just pull request to the 'develop') branch is allowed!
+Contributions are welcome! Please feel free to open issues or submit pull requests.
+
+> Note: Please target your pull requests to the `develop` branch.
 
 ## License
 
