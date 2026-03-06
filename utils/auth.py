@@ -7,7 +7,8 @@ class AuthService:
 
     def register_user(self, username, password):
         # Check if username is already taken
-        if self.user_repository.get_user_by_username(username):
+        existing_user = self.user_repository.get_user_by_username(username)
+        if existing_user:
             raise ValueError('Username is already taken')
 
         # Hash the password and store the user in the repository
@@ -17,9 +18,11 @@ class AuthService:
     def authenticate_user(self, username, password):
         # Get the user from the repository based on the username
         user = self.user_repository.get_user_by_username(username)
+        if not user:
+            return None
 
         # Check if the user exists and if the password is correct
-        if user and check_password_hash(user.password, password):
+        if check_password_hash(user.password, password):
             return user
         else:
             return None
