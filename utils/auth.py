@@ -20,6 +20,6 @@ class AuthService:
         user = self.user_repository.get_user_by_username(username)
         if user:
             # Check if the password is correct
-            return check_password_hash(user.password, provided_password)
+            return check_password_hash(user.hashed_password, provided_password)
         else:
-            return None
+            return False
