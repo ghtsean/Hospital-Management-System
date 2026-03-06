@@ -1,6 +1,6 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 
-
+# Ensure unique usernames are checked in a more robust way
 class AuthService:
     def __init__(self, user_repository):
         self.user_repository = user_repository
